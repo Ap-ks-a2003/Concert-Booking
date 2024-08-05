@@ -1,0 +1,139 @@
+<!-- booking.html -->
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Concert Booking</title>
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
+        integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8sh+Wy6mBIM9PXP2hMW1geN9iAWhdA6a9tMI0"
+        crossorigin="anonymous">
+
+    <style>
+        body {
+            background-color: #f8f9fa;
+            padding-top: 20px;
+            background-image: url('https://www.rollingstone.com/wp-content/uploads/2020/09/black-promoters-collective.jpg?resize=1800');
+            background-repeat: no-repeat;
+            background-size: cover;
+            /* Cover the entire viewport */
+            background-position: center;
+            /* Center the background image */
+            position: relative;
+        }
+
+        .booking-container {
+            font-family: 'Arial', 'Helvetica', sans-serif;
+            background-color: rgba(255, 255, 255, 0.6);
+            border-radius: 15px;
+            box-shadow: 0 0 20px rgba(0, 0, 0, 0.2);
+            padding: 30px;
+            margin-top: 20px;
+            max-width: 500px; /* Adjust as needed */
+            margin-left: auto;
+            margin-right: auto;
+            backdrop-filter: blur;
+        }
+
+        h1 {
+            text-align: center;
+            font-family: 'sans-serif';
+            color: rgb(108, 167, 215);
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        .form-group label {
+            font-weight: bold;
+        }
+
+        .form-group input {
+            width: 100%;
+            padding: 10px; /* Increased padding for a better look */
+            box-sizing: border-box;
+            margin-top: 5px;
+            border: 1px solid #ced4da; /* Added border for input fields */
+            border-radius: 5px;
+        }
+
+        button {
+            background-color: #2675aed9;
+            color: #fff;
+            padding: 15px; /* Increased padding for a better look */
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            width: 100%; /* Make the button full-width */
+        }
+    </style>
+</head>
+
+<body >
+    <h1>BOOK YOUR TICKETS</h1>
+    <div class="booking-container">
+        <form method="post" action="">
+            {% csrf_token %}
+          
+            <!-- Display form errors if any -->
+            {% if form.errors %}
+                <p style="color: red;">Please correct the errors below.</p>
+            {% endif %}
+            {{ form.non_field_errors }}
+            
+            <!-- Additional form fields -->
+            <div class="form-group">
+                <label for="{{ form.username.id_for_label }}">Username</label>
+                {{ form.username }}
+                {{ form.username.errors }}
+            </div>
+
+            <div class="form-group">
+                <label for="{{ form.email.id_for_label }}">Email</label>
+                {{ form.email }}
+                {{ form.email.errors }}
+            </div>
+
+            <div class="form-group">
+                <label for="{{ form.contact_no.id_for_label }}">Contact Number</label>
+                {{ form.contact_no }}
+                {{ form.contact_no.errors }}
+            </div>
+
+            <div class="form-group">
+                <label for="{{ form.num_of_people.id_for_label }}">Number of People</label>
+                {{ form.num_of_people }}
+                {{ form.num_of_people.errors }}
+            </div>
+
+            <!-- Existing credit card fields -->
+            <div class="form-group">
+                <label for="{{ form.cardNumber.id_for_label }}">Card Number</label>
+                {{ form.cardNumber }}
+                {{ form.cardNumber.errors }}
+            </div>
+
+            <!-- Additional form fields -->
+            <!-- ... (you can add more fields as needed) -->
+
+            <button type="submit">Submit</button>
+        </form>
+    </div>
+
+    <!-- Bootstrap JS (if needed) -->
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
+        integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj"
+        crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.0.7/dist/umd/popper.min.js"
+        integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smX9UzOJbI5KCAh9a1tgY21S7"
+        crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"
+        integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8sh+Wy6mBIM9PXP2hMW1geN9iAWhdA6a9tMI0"
+        crossorigin="anonymous"></script>
+</body>
+
+</html>
